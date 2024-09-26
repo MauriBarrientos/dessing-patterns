@@ -18,7 +18,7 @@ class deptoMantenimiento implements observador {
 
 //clase que actua como objeto (observable)
 class equipo {
-    private observadores: observador[]= [];
+    private observadores: observador[]= []; //lista vacia de observadores
     private tiempoUso: number = 0; 
 
     constructor (public nombre: string, public tipo: string, public estado: string){}
@@ -47,12 +47,8 @@ class equipo {
     }
 }
 
-// Uso del patrón Observer
+//==========TESTEO==========
 const departamentoMantenimiento = new deptoMantenimiento('Mantenimiento General');
 const equipo1 = new equipo('Laptop HP', 'Laptop', 'Operativo');
 
 equipo1.agregarObservador(departamentoMantenimiento);
-
-// Simular el uso del equipo
-equipo1.usar(50);  // No debería notificar
-equipo1.usar(60);  // Debería notificar, ya que alcanza 110 horas
